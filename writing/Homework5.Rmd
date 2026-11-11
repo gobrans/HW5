@@ -1,0 +1,26 @@
+---
+title: "Homework5"
+author: "Sabrina Gobran"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Choice 2
+
+Recreate the graph shown below. It shows monthly homicides in Baltimore, with a reference added for the date of the arrest of Freddie Gray and color used to show colder months (November through April) versus warmer months (May through October). There is a smooth line added to help show seasonal and long-term trends in this data.
+
+```{r}
+
+homicides <- read.csv("data/homicide-data.csv")
+
+homicides$city_name <- paste(homicides$city, homicides$state, sep = ", ")
+
+head(homicides)
+
+```
+
