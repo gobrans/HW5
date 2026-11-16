@@ -44,8 +44,6 @@ baltimore_homicides <- homicides %>%
 
 head(baltimore_homicides)
 
-
-
 ```
 
 
@@ -69,6 +67,7 @@ ggplot(baltimore_homicides, aes(x = Month_Yr, y=homicides_total, fill = Weather)
   labs(x= "Date", y="Monthly homicides", title="Homicides in Baltimore, MD") +
   theme_dark() +
   scale_fill_manual(values=color) +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom", legend.title = element_blank()) 
+ 
 ```
 
