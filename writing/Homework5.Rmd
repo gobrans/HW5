@@ -57,13 +57,18 @@ baltimore_homicides <- baltimore_homicides %>%
   
 baltimore_homicides
 ```
-
-
-
 ```{r}
+color <- c(Summer = "#CCCCCC", Winter = "#99CCCC")
+```
+
+
+
+```{r, fig.width=10, fig.height=3}
 ggplot(baltimore_homicides, aes(x = Month_Yr, y=homicides_total, fill = Weather)) +
   geom_col() +
   labs(x= "Date", y="Monthly homicides", title="Homicides in Baltimore, MD") +
-  theme_dark()
+  theme_dark() +
+  scale_fill_manual(values=color) +
+  theme(legend.position = "bottom")
 ```
 
