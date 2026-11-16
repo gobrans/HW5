@@ -18,6 +18,8 @@ Recreate the graph shown below. It shows monthly homicides in Baltimore, with a 
 library(dplyr)
 library(ggplot2)
 library(lubridate)
+library(stringr)
+library(tidyr)
 ```
 
 
@@ -42,11 +44,24 @@ baltimore_homicides <- homicides %>%
 
 head(baltimore_homicides)
 
+
+
 ```
 
 
 ```{r}
-ggplot(baltimore_homicides, aes(x = Month_Yr, y=homicides_total)) +
+baltimore_homicides <- baltimore_homicides %>% 
+  mutate(Month_Year = Month_Yr) %>% 
+  separate(Month_Year, c("Year", "Month"), sep = "-") %>% 
+  mutate(Weather = ifelse(grepl("11|12|01|02|03|04", Month),"Winter","Summer")) 
+  
+baltimore_homicides
+```
+
+
+
+```{r}
+ggplot(baltimore_homicides, aes(x = Month_Yr, y=homicides_total, fill = Weather)) +
   geom_col() +
   labs(x= "Date", y="Monthly homicides", title="Homicides in Baltimore, MD") +
   theme_dark()
