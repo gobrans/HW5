@@ -71,6 +71,7 @@ ggplot(baltimore_homicides, aes(x = Month_Yr, y=homicides_total, fill = Weather)
   geom_vline(xintercept = "2015-04",
            color = "red",
            linetype = "dashed",
-           linewidth = 1)
+           linewidth = 1) +
+   scale_y_continuous(n.breaks = 5)
 ```
 
