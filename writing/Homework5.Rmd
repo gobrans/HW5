@@ -73,6 +73,8 @@ ggplot(baltimore_homicides, aes(x = Month_Yr, y=homicides_total, fill = Weather)
            linetype = "dashed",
            linewidth = 1) +
    scale_y_continuous(n.breaks = 5) +
-   scale_x_discrete(breaks = c("2008-01", "2010-01", "2012-01", "2014-01", "2016-01", "2018-01"))
+   scale_x_discrete(breaks = c("2008-01", "2010-01", "2012-01", "2014-01", "2016-01", "2018-01")) +
+   geom_smooth(aes(x = as.numeric(as.factor(Month_Yr)), y = homicides_total,group = 1),
+              method = "loess", span =  0.1, se = FALSE, color = "Blue") 
 ```
 
